@@ -49,7 +49,29 @@
 </table>
 
 ---
+---
 
+## 🧭 App Versions
+
+This repository includes two desktop versions of the app:
+
+### 🔹 Version 1 – Classic Animation  
+📁 Folder: `Version_1`  
+- `greetings_project.py`: Source code  
+- `greetings_project.exe`: Windows executable  
+- Features: Basic animation, time-based greeting logic
+
+### 🔹 Version 2 – Enhanced Visuals  
+📁 Folder: `Version_2`  
+- `greetings_project.py`: Source code  
+- `greetings_project.exe`: Windows executable  
+- Features: Improved animation, smoother transitions, visual polish
+
+### 🌐 Web Version  
+- Live demo: [sourabhdhara.github.io/Greetings_project](https://sourabhdhara.github.io/Greetings_project)  
+- Built with HTML/CSS/JS
+
+---
 ## 🚀 How to Use
 
 ### 🐍 Python Application
