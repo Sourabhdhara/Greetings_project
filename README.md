@@ -114,7 +114,8 @@ Open the `index.html` file in a modern browser.
 **📧 For questions or permissions, please reach out:**
 
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](sourabhdhara2020@gmail.com)
-[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/Sourabh_dhara)
+[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/sourabh_dhara)
+
 
 
 </div>
