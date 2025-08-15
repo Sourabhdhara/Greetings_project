@@ -1,0 +1,50 @@
+End User License Agreement (EULA)
+Animated Time Greeting Application
+
+Copyright © 2025 [Your Name]. All rights reserved.
+
+IMPORTANT - READ CAREFULLY: This End User License Agreement ("EULA") is a legal agreement between you (either an individual or a single entity) and [Your Name] for the software product identified above, which includes computer software and may include associated media, printed materials, and "online" or electronic documentation ("SOFTWARE PRODUCT").
+
+By installing, copying, or otherwise using the SOFTWARE PRODUCT, you agree to be bound by the terms of this EULA. If you do not agree to the terms of this EULA, do not install or use the SOFTWARE PRODUCT.
+
+GRANT OF LICENSE
+This EULA grants you the following rights:
+- Installation and Use: You may install and use one copy of the SOFTWARE PRODUCT on a single computer.
+- Sharing: You may share the SOFTWARE PRODUCT with others for their use.
+- Commercial Use: You may use the SOFTWARE PRODUCT for commercial purposes.
+
+RESTRICTIONS
+You may NOT:
+- Modify, reverse engineer, decompile, or disassemble the SOFTWARE PRODUCT.
+- Remove any copyright notices or proprietary labels from the SOFTWARE PRODUCT.
+- Distribute modified versions of the SOFTWARE PRODUCT.
+- Claim ownership of the SOFTWARE PRODUCT or its source code.
+- Rent, lease, or lend the SOFTWARE PRODUCT.
+- Create derivative works based on the SOFTWARE PRODUCT.
+
+INTELLECTUAL PROPERTY RIGHTS
+The SOFTWARE PRODUCT is owned by [Your Name] and is protected by copyright laws and international copyright treaties, as well as other intellectual property laws and treaties. The SOFTWARE PRODUCT is licensed, not sold.
+
+You acknowledge that no title to the intellectual property in the SOFTWARE PRODUCT is transferred to you. You further acknowledge that title and full ownership rights to the SOFTWARE PRODUCT will remain the exclusive property of [Your Name] and you will not acquire any rights to the SOFTWARE PRODUCT except as expressly set forth in this license.
+
+TERMINATION
+Without prejudice to any other rights, [Your Name] may terminate this EULA if you fail to comply with the terms and conditions of this EULA. In such event, you must destroy all copies of the SOFTWARE PRODUCT and all of its component parts.
+
+DISCLAIMER OF WARRANTIES
+The SOFTWARE PRODUCT is provided "AS IS" without warranty of any kind. [Your Name] disclaims all warranties, either express or implied, including but not limited to implied warranties of merchantability and fitness for a particular purpose.
+
+LIMITATION OF LIABILITY
+In no event shall [Your Name] be liable for any damages whatsoever (including, without limitation, damages for loss of business profits, business interruption, loss of business information, or any other pecuniary loss) arising out of the use of or inability to use this SOFTWARE PRODUCT.
+
+GOVERNING LAW
+This EULA shall be governed by the laws of [Your Country/State].
+
+ENTIRE AGREEMENT
+This EULA constitutes the entire agreement between you and [Your Name] relating to the SOFTWARE PRODUCT and supersedes all prior or contemporaneous understandings regarding such subject matter.
+
+If you have any questions concerning this EULA, or if you desire to contact [Your Name] for any reason, please contact:
+
+Email: [your-email@example.com]
+Date: [Current Date]
+
+BY INSTALLING OR USING THE SOFTWARE PRODUCT, YOU ACKNOWLEDGE THAT YOU HAVE READ THIS EULA, UNDERSTAND IT, AND AGREE TO BE BOUND BY ITS TERMS AND CONDITIONS.
