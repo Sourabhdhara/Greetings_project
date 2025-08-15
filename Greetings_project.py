@@ -1,0 +1,267 @@
+import tkinter as tk
+from tkinter import ttk
+from datetime import datetime
+import math
+
+class AnimatedTimeGreeting:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Animated Time Greeting")
+        self.root.geometry("800x600")
+        self.root.configure(bg="#1a1a1a")
+        
+        # Animation variables
+        self.animation_frame = 0
+        self.color_phase = 0
+        self.pulse_scale = 1.0
+        self.star_positions = []
+        
+        # Create canvas for animations
+        self.canvas = tk.Canvas(root, width=800, height=600, bg="#1a1a1a", highlightthickness=0)
+        self.canvas.pack(fill=tk.BOTH, expand=True)
+        
+        # Initialize star positions for night animation
+        self.init_stars()
+        
+        # Start the animation loop
+        self.update_display()
+    
+    def init_stars(self):
+        """Initialize random star positions for night animation"""
+        import random
+        self.star_positions = [(random.randint(50, 750), random.randint(50, 200)) for _ in range(30)]
+    
+    def get_time_data(self):
+        """Get current time and determine greeting"""
+        current_time = datetime.now()
+        formatted = current_time.strftime("%A\n%d %B, %Y\n%I:%M %p")
+        h = int(current_time.strftime("%H"))
+        m = int(current_time.strftime("%M"))
+        s = int(current_time.strftime("%S"))
+        
+        if 12 > h >= 0 and m >= 0 and s >= 0:
+            greeting = "Good Morning"
+            period = "morning"
+        elif 17 > h >= 12 and m >= 0 and s >= 0:
+            greeting = "Good Afternoon"
+            period = "afternoon"
+        elif 20 > h >= 17 and m >= 0 and s >= 0:
+            greeting = "Good Evening"
+            period = "evening"
+        else:
+            greeting = "Good Night"
+            period = "night"
+            
+        return greeting, formatted, period, h, m, s
+    
+    def get_theme_colors(self, period):
+        """Get theme colors based on time period"""
+        themes = {
+            "morning": {
+                "bg_gradient": ["#87CEEB", "#FFE4B5", "#FFA07A"],
+                "text_color": "#2F4F4F",
+                "accent": "#FF6347",
+                "secondary": "#20B2AA"
+            },
+            "afternoon": {
+                "bg_gradient": ["#F0E68C", "#FFD700", "#FFA500"],
+                "text_color": "#8B4513",
+                "accent": "#FF8C00",
+                "secondary": "#DAA520"
+            },
+            "evening": {
+                "bg_gradient": ["#9370DB", "#8A2BE2", "#4B0082"],
+                "text_color": "#F0E68C",
+                "accent": "#FF1493",
+                "secondary": "#FF69B4"
+            },
+            "night": {
+                "bg_gradient": ["#191970", "#000080", "#0F0F23"],
+                "text_color": "#E6E6FA",
+                "accent": "#4169E1",
+                "secondary": "#6495ED"
+            }
+        }
+        return themes[period]
+    
+    def draw_background_animation(self, period, theme):
+        """Draw animated background based on time period"""
+        self.canvas.delete("background")
+        
+        if period == "morning":
+            self.draw_morning_animation(theme)
+        elif period == "afternoon":
+            self.draw_afternoon_animation(theme)
+        elif period == "evening":
+            self.draw_evening_animation(theme)
+        else:
+            self.draw_night_animation(theme)
+    
+    def draw_morning_animation(self, theme):
+        """Draw morning animation with sun rays and clouds"""
+        # Gradient background
+        for i in range(0, 600, 5):
+            color_ratio = i / 600
+            r = int(135 + (255-135) * color_ratio)
+            g = int(206 + (228-206) * color_ratio)
+            b = int(235 + (181-235) * color_ratio)
+            color = f"#{r:02x}{g:02x}{b:02x}"
+            self.canvas.create_rectangle(0, i, 800, i+5, fill=color, outline="", tags="background")
+        
+        # Animated sun
+        sun_x, sun_y = 150, 100
+        sun_size = 40 + 10 * math.sin(self.animation_frame * 0.1)
+        self.canvas.create_oval(sun_x-sun_size, sun_y-sun_size, sun_x+sun_size, sun_y+sun_size,
+                               fill="#FFD700", outline="#FFA500", width=3, tags="background")
+        
+        # Sun rays
+        for i in range(8):
+            angle = (i * 45 + self.animation_frame * 2) * math.pi / 180
+            start_x = sun_x + (sun_size + 10) * math.cos(angle)
+            start_y = sun_y + (sun_size + 10) * math.sin(angle)
+            end_x = sun_x + (sun_size + 30) * math.cos(angle)
+            end_y = sun_y + (sun_size + 30) * math.sin(angle)
+            self.canvas.create_line(start_x, start_y, end_x, end_y, 
+                                   fill="#FFD700", width=3, tags="background")
+    
+    def draw_afternoon_animation(self, theme):
+        """Draw afternoon animation with bright sun and moving clouds"""
+        # Gradient background
+        for i in range(0, 600, 5):
+            color_ratio = i / 600
+            r = int(240 + (255-240) * color_ratio)
+            g = int(230 + (215-230) * color_ratio)
+            b = int(140 + (0-140) * color_ratio)
+            color = f"#{r:02x}{g:02x}{b:02x}"
+            self.canvas.create_rectangle(0, i, 800, i+5, fill=color, outline="", tags="background")
+        
+        # Bright sun
+        sun_x, sun_y = 650, 80
+        for i in range(3):
+            size = 35 - i*5 + 5 * math.sin(self.animation_frame * 0.1 + i)
+            alpha = 1.0 - i * 0.3
+            self.canvas.create_oval(sun_x-size, sun_y-size, sun_x+size, sun_y+size,
+                                   fill="#FFD700", outline="", tags="background")
+    
+    def draw_evening_animation(self, theme):
+        """Draw evening animation with sunset colors and floating particles"""
+        # Gradient background
+        for i in range(0, 600, 5):
+            color_ratio = i / 600
+            r = int(147 + (139-147) * color_ratio)
+            g = int(112 + (69-112) * color_ratio)
+            b = int(219 + (19-219) * color_ratio)
+            color = f"#{r:02x}{g:02x}{b:02x}"
+            self.canvas.create_rectangle(0, i, 800, i+5, fill=color, outline="", tags="background")
+        
+        # Setting sun
+        sun_x = 100 + 20 * math.sin(self.animation_frame * 0.05)
+        sun_y = 400
+        self.canvas.create_oval(sun_x-30, sun_y-30, sun_x+30, sun_y+30,
+                               fill="#FF4500", outline="#FF1493", width=2, tags="background")
+        
+        # Floating particles
+        for i in range(10):
+            x = (50 + i * 70 + self.animation_frame) % 800
+            y = 200 + 50 * math.sin((x + i * 100) * 0.01)
+            size = 3 + 2 * math.sin(self.animation_frame * 0.1 + i)
+            self.canvas.create_oval(x-size, y-size, x+size, y+size,
+                                   fill="#FF69B4", outline="", tags="background")
+    
+    def draw_night_animation(self, theme):
+        """Draw night animation with stars and moon"""
+        # Dark gradient background
+        for i in range(0, 600, 5):
+            color_ratio = i / 600
+            r = int(25 + (15-25) * color_ratio)
+            g = int(25 + (15-25) * color_ratio)
+            b = int(112 + (35-112) * color_ratio)
+            color = f"#{r:02x}{g:02x}{b:02x}"
+            self.canvas.create_rectangle(0, i, 800, i+5, fill=color, outline="", tags="background")
+        
+        # Twinkling stars
+        for i, (x, y) in enumerate(self.star_positions):
+            brightness = 0.5 + 0.5 * math.sin(self.animation_frame * 0.1 + i)
+            size = 1 + 2 * brightness
+            alpha = int(255 * brightness)
+            color = f"#{alpha:02x}{alpha:02x}FF"
+            self.canvas.create_oval(x-size, y-size, x+size, y+size,
+                                   fill=color, outline="", tags="background")
+        
+        # Moon
+        moon_x, moon_y = 650, 100
+        moon_glow = 5 * math.sin(self.animation_frame * 0.05)
+        self.canvas.create_oval(moon_x-25-moon_glow, moon_y-25-moon_glow, 
+                               moon_x+25+moon_glow, moon_y+25+moon_glow,
+                               fill="#E6E6FA", outline="#D3D3D3", width=2, tags="background")
+    
+    def draw_text_elements(self, greeting, formatted_time, theme):
+        """Draw animated text elements"""
+        self.canvas.delete("text")
+        
+        # Pulsing greeting text
+        pulse = 1 + 0.1 * math.sin(self.animation_frame * 0.15)
+        greeting_font_size = int(48 * pulse)
+        
+        # Greeting shadow
+        self.canvas.create_text(402, 252, text=greeting, 
+                               font=("Helvetica", greeting_font_size, "bold"),
+                               fill="#000000", tags="text", anchor="center")
+        
+        # Greeting main text
+        self.canvas.create_text(400, 250, text=greeting, 
+                               font=("Helvetica", greeting_font_size, "bold"),
+                               fill=theme["accent"], tags="text", anchor="center")
+        
+        # Time display with gentle animation
+        time_offset = 5 * math.sin(self.animation_frame * 0.1)
+        lines = formatted_time.split('\n')
+        
+        for i, line in enumerate(lines):
+            y_pos = 350 + i * 40 + time_offset
+            
+            # Time shadow
+            self.canvas.create_text(401, y_pos + 1, text=line,
+                                   font=("Helvetica", 24, "normal"),
+                                   fill="#000000", tags="text", anchor="center")
+            
+            # Time main text
+            self.canvas.create_text(400, y_pos, text=line,
+                                   font=("Helvetica", 24, "normal"),
+                                   fill=theme["text_color"], tags="text", anchor="center")
+    
+    def update_display(self):
+        """Main update loop"""
+        greeting, formatted_time, period, h, m, s = self.get_time_data()
+        theme = self.get_theme_colors(period)
+        
+        # Clear canvas
+        self.canvas.delete("all")
+        
+        # Draw animations
+        self.draw_background_animation(period, theme)
+        self.draw_text_elements(greeting, formatted_time, theme)
+        
+        # Update animation frame
+        self.animation_frame += 1
+        if self.animation_frame > 360:
+            self.animation_frame = 0
+        
+        # Schedule next update
+        self.root.after(50, self.update_display)
+
+def main():
+    root = tk.Tk()
+    root.resizable(False, False)
+    
+    # Center the window
+    root.update_idletasks()
+    x = (root.winfo_screenwidth() // 2) - (800 // 2)
+    y = (root.winfo_screenheight() // 2) - (600 // 2)
+    root.geometry(f"800x600+{x}+{y}")
+    
+    app = AnimatedTimeGreeting(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()

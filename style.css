@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica', Arial, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    background: #1a1a1a;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#backgroundCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    user-select: none;
+}
+
+.greeting-text {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    animation: pulse 3s ease-in-out infinite;
+    transition: all 0.5s ease;
+}
+
+.time-display {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    animation: float 4s ease-in-out infinite;
+}
+
+#day {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+#date {
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+#time {
+    font-weight: 300;
+    font-size: 2rem;
+}
+
+/* Animation Keyframes */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+/* Morning Theme */
+.morning .greeting-text {
+    color: #FF6347;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.morning .time-display {
+    color: #2F4F4F;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Afternoon Theme */
+.afternoon .greeting-text {
+    color: #FF8C00;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.afternoon .time-display {
+    color: #8B4513;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+/* Evening Theme */
+.evening .greeting-text {
+    color: #FF1493;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.evening .time-display {
+    color: #F0E68C;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Night Theme */
+.night .greeting-text {
+    color: #4169E1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    animation: glow 2s ease-in-out infinite;
+}
+
+.night .time-display {
+    color: #E6E6FA;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .greeting-text {
+        font-size: 2.5rem;
+    }
+    
+    .time-display {
+        font-size: 1.4rem;
+    }
+    
+    #time {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .greeting-text {
+        font-size: 2rem;
+    }
+    
+    .time-display {
+        font-size: 1.2rem;
+    }
+    
+    #time {
+        font-size: 1.4rem;
+    }
+}
