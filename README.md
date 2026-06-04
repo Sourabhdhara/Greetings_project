@@ -1,5 +1,5 @@
 # 🕒 Animated Time Greeting Application
-#https://sourabhdhara.github.io/Greetings_project/
+
 
 <div align="center">
 
