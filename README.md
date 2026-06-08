@@ -1,7 +1,7 @@
 <div align="center">
 
 # 🕒 Animated Time Greeting Application
-
+</div>
 
 <div align="center">
 
