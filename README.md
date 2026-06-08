@@ -1,3 +1,5 @@
+<div align="center">
+
 # 🕒 Animated Time Greeting Application
 
 
